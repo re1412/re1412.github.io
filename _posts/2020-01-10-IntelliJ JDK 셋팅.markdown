@@ -1,6 +1,6 @@
 ---
 layout: post
-title: IntelliJ 프로젝트 버전(Execution failed for task ':compileJava')
+title: IntelliJ 프로젝트 버전(Execution failed for task ':compileJava') 문제
 date: 2020-01-10 13:22:00 +0900
 category: java
 ---
