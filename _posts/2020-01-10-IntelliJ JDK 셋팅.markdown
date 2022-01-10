@@ -9,4 +9,4 @@ category: java
 
 IntelliJ 
 
-<img src="../public/img/screenshot-1.png">
+<img src="/public/img/screenshot-1.png">
