@@ -1,7 +1,7 @@
 ---
 layout: post
-title: intelliJ 단축키 
-date: 2022-01-20 00:00:00 +0900
+title: CentOS JAVA 환경변수 
+date: 2022-01-24 00:00:00 +0900
 category: java
 ---
 # JAVA 설치
