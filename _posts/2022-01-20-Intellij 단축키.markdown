@@ -1,0 +1,13 @@
+---
+layout: post
+title: intelliJ 단축키 
+date: 2022-01-20 00:00:00 +0900
+category: java
+---
+# 주로 쓰는 IntelliJ 단축키(Window 기준)
+
+generate : getter/setter/생성자 자동완성 - Alt + Insert
+@Test : JUnit 테스트 annotation, 테스트 클래서 생성 - Ctrl + Shift + T
+맨끝 자동완성("", ;) : Ctrl + Shift + Enter
+
+
