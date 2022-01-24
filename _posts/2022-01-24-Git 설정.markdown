@@ -1,0 +1,25 @@
+---
+layout: post
+title: gradle WAS 배포
+date: 2022-01-13 10:03:00 +0900
+category: java
+---
+# 서버 준비
+```ruby
+mkdir repo
+git init --bare Server
+```
+
+# 로컬 준비
+```ruby
+git init local
+echo "a" >> test.txt
+git add test.txt
+git commit -m 1
+git remote add origin ssh://[계정]@[IP]/[Server 경로]
+git push
+git push --set-upstream origin master
+```
+
+# git 저장
+>git clone ssh://[계정]@IP/[git repo 경로] [저장디렉토리명]
