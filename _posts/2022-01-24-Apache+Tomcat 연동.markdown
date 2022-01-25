@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Apache+Tomcat 연동
-date: 2022-01-24 10:03:00 +0900
+date: 2022-01-24 20:03:00 +0900
 category: java
 ---
 # CentOS7
@@ -10,7 +10,8 @@ yum -y install httpd
 ```
 
 > httpd -v 로 버전확인
-
+>
+  
 > 방화벽 설정
 ```ruby
 firewall-cmd --permanent --add-service=http  //서비스 추가
@@ -56,7 +57,7 @@ chcon -u system_u -r object_r -t httpd_modules_t /etc/httpd/modules/mod_jk.so
 
 
 > apache 설정
-vi /etc/httpd/conf/httpd.conf 변경 (/LoadModule 찾기)
+> vi /etc/httpd/conf/httpd.conf 변경 (/LoadModule 찾기)
 ```ruby
 LoadModule jk_module modules/mod_jk.so
 <IfModule mod_jk.c>
