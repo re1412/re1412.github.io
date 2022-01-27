@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Apache+Tomcat 연동
+title: Apache+Tomcat(Spring boot) 연동
 date: 2022-01-24 20:03:00 +0900
 category: java
 ---
@@ -89,13 +89,7 @@ spring boot 내장 톰캣 사용하여 application.properties에 server.port만 
 
 > vi /etc/httpd/conf/uriworkermap.properties
 ```ruby
-<VirtualHost *:80>
-ServerName localhost
-JkMount /*.jsp contom
-JkMount /*.json contom
-JkMount /*.xml contom
-JkMount /*.do contom
-</VirtualHost>
+/*=contom
 ```
 
 
@@ -116,7 +110,6 @@ ServerName localhost:80
 > 마지막으로 selinux 설정
 ```ruby
 chcon -R -t httpd_sys_rw_content_t [톰캣 경로]/webapps/ROOT/
-setenforce 0
-setenforce 1
+setenforce 0 <- 안해주면 You don't have permission to access / 이런 상황 발생
 systemctl start httpd
 ```
