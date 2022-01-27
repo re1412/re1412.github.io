@@ -10,7 +10,6 @@ yum -y install httpd
 ```
 
 > httpd -v 로 버전확인
->
   
 > 방화벽 설정
 ```ruby
@@ -55,9 +54,44 @@ ll /etc/httpd/modules | grep mod_jk.so  // mod_jk.so 확인
 chcon -u system_u -r object_r -t httpd_modules_t /etc/httpd/modules/mod_jk.so
 ```
 
+> Spring boot 설정
+>> application.properties에 해당 내용 추가
+>>> tomcat.ajp.protocol=AJP/1.3
+>>> tomcat.ajp.port=8009
+>>> tomcat.ajp.enabled=true
+
+
+>> SpringConfig 클래스 생성 및 추가
+```ruby
+@Configuration
+public class SpringConfig {
+    @Value("${tomcat.ajp.protocol}")
+    String ajpProtocol;
+    @Value("${tomcat.ajp.port}")
+    int ajpPort;
+
+    @Bean
+    public ServletWebServerFactory servletContainer(){
+        TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
+        tomcat.addAdditionalTomcatConnectors(createAjpConnector());
+
+        return tomcat;
+    }
+
+    private Connector createAjpConnector(){
+        Connector ajpConnector = new Connector(ajpProtocol);
+        ajpConnector.setPort(ajpPort);
+        ajpConnector.setSecure(false);
+        ajpConnector.setAllowTrace(false);
+        ajpConnector.setScheme("http");
+        ((AbstractAjpProtocol<?>)ajpConnector.getProtocolHandler()).setSecretRequired(false);
+        return ajpConnector;
+    }
+}
+```
 
 > apache 설정
-> vi /etc/httpd/conf/httpd.conf 변경 (/LoadModule 찾기)
+>> vi /etc/httpd/conf/httpd.conf 변경 (/LoadModule 찾기)
 ```ruby
 LoadModule jk_module modules/mod_jk.so
 <IfModule mod_jk.c>
@@ -73,7 +107,7 @@ Include conf.modules.d/*.conf
 ```
 
 
-> vi /etc/httpd/conf/workers.properties
+>> vi /etc/httpd/conf/workers.properties
 ```ruby
 worker.list=contom   //워커 이름 임의 설정(connect tomcat이란 뜻)
 worker.contom.port=8009  //워커 이름을 가운데 입력
@@ -83,7 +117,7 @@ worker.contom.lbfactor=1 //tomcat인스턴스 부하 분산 지수, 균등하게
 ```
 
 > vi [톰캣경로]/conf/server.xml
-spring boot 내장 톰캣 사용하여 application.properties에 server.port만 맞춰줌
+spring boot 내장 톰캣 사용하여 application.properties 맞춰 주면 된다.
 
 
 
@@ -97,7 +131,7 @@ spring boot 내장 톰캣 사용하여 application.properties에 server.port만 
 ```ruby
 DocumentRoot "[톰캣 경로]/webapps/ROOT"
 <Directory "[톰캣 경로]/webapps/ROOT">
-    AllowOverride None
+    AllowOverride All
     # Allow open access:
     Require all granted
 </Directory>
@@ -110,6 +144,6 @@ ServerName localhost:80
 > 마지막으로 selinux 설정
 ```ruby
 chcon -R -t httpd_sys_rw_content_t [톰캣 경로]/webapps/ROOT/
-setenforce 0 <- 안해주면 You don't have permission to access / 이런 상황 발생
+setenforce 0 <- 안해주면 You don't have permission to access / 이런 에러 발생
 systemctl start httpd
 ```
