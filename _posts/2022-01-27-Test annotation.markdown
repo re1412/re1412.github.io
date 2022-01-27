@@ -4,8 +4,8 @@ title: Spring boot test annotation
 date: 2022-01-27 10:03:00 +0900
 category: java
 ---
-# Spring boot test annotation
-> @Test
+# Test : 단위테스트(권장)
+> @Test  
 >> java 소스에 대한 테스트 실행
 
 # Spring boot 통합 테스트

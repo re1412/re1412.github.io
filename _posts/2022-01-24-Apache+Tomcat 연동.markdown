@@ -62,7 +62,7 @@ chcon -u system_u -r object_r -t httpd_modules_t /etc/httpd/modules/mod_jk.so
 
 
 >> SpringConfig 클래스 생성 및 추가
-```ruby
+```java
 @Configuration
 public class SpringConfig {
     @Value("${tomcat.ajp.protocol}")
@@ -92,7 +92,7 @@ public class SpringConfig {
 
 > apache 설정
 >> vi /etc/httpd/conf/httpd.conf 변경 (/LoadModule 찾기)
-```ruby
+```java  
 LoadModule jk_module modules/mod_jk.so
 <IfModule mod_jk.c>
 JkWorkersFile conf/workers.properties
@@ -128,7 +128,7 @@ spring boot 내장 톰캣 사용하여 application.properties 맞춰 주면 된�
 
 
 > vi /etc/httpd/conf/httpd.conf (/DocumentRoot 검색, /ServerName 검색)
-```ruby
+```java
 DocumentRoot "[톰캣 경로]/webapps/ROOT"
 <Directory "[톰캣 경로]/webapps/ROOT">
     AllowOverride All
