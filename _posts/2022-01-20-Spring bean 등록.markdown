@@ -25,3 +25,19 @@ category: java
   
 >2. 자바 코드로 직접 Spring bean 등록
 
+SpringConfig 생성
+```ruby
+@Configuration
+public class SpringConfig {
+
+    @Bean
+    public MemberService memberService(){
+        return new MemberService(memberRepository());
+    }
+
+    @Bean
+    public MemberRepository memberRepository(){
+        return new MemoryMemberRepository();
+    }
+}
+```
