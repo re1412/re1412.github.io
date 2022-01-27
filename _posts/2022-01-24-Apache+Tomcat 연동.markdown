@@ -50,9 +50,7 @@ ll /etc/httpd/modules | grep mod_jk.so  // mod_jk.so 확인
 
 
 > selinux 보안 관련 설정 변경
-```ruby
-chcon -u system_u -r object_r -t httpd_modules_t /etc/httpd/modules/mod_jk.so
-```
+>>chcon -u system_u -r object_r -t httpd_modules_t /etc/httpd/modules/mod_jk.so
 
 > Spring boot 설정
 >> application.properties에 해당 내용 추가
@@ -92,7 +90,7 @@ public class SpringConfig {
 
 > apache 설정
 >> vi /etc/httpd/conf/httpd.conf 변경 (/LoadModule 찾기)
-```java  
+```bash
 LoadModule jk_module modules/mod_jk.so
 <IfModule mod_jk.c>
 JkWorkersFile conf/workers.properties
@@ -108,13 +106,12 @@ Include conf.modules.d/*.conf
 
 
 >> vi /etc/httpd/conf/workers.properties
-```ruby
-worker.list=contom   //워커 이름 임의 설정(connect tomcat이란 뜻)
-worker.contom.port=8009  //워커 이름을 가운데 입력
-worker.contom.host=localhost  //포트 번호와 타입은 아래 설정 참고
-worker.contom.type=ajp13
-worker.contom.lbfactor=1 //tomcat인스턴스 부하 분산 지수, 균등하게 분산하려고 1로 설정
-```
+>>> worker.list=contom   //워커 이름 임의 설정(connect tomcat이란 뜻)
+>>> worker.contom.port=8009  //워커 이름을 가운데 입력
+>>> worker.contom.host=localhost  //포트 번호와 타입은 아래 설정 참고
+>>> worker.contom.type=ajp13
+>>> worker.contom.lbfactor=1 //tomcat인스턴스 부하 분산 지수, 균등하게 분산하려고 1로 설정
+
 
 > vi [톰캣경로]/conf/server.xml
 spring boot 내장 톰캣 사용하여 application.properties 맞춰 주면 된다.
