@@ -23,3 +23,19 @@ git push --set-upstream origin master
 
 # git 저장
 >git clone ssh://[계정]@IP/[git repo 경로] [저장디렉토리명]
+
+
+# git push
+> git add -A
+> git commit -m "message"
+> git push origin [branch명]
+
+
+# 원격 저장소 연결
+> git remote add [이름 예:origin] [github url]
+
+
+# git pull error
+> git pull origin master <- error
+> git fetch --all
+> git reset --hard origin/master
