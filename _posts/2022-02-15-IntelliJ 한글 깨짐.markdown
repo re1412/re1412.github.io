@@ -1,0 +1,13 @@
+---
+layout: post
+title: IntelliJ 한글 깨짐
+date: 2022-02-15 10:03:00 +0900
+category: java
+---
+# IntelliJ 한글 깨짐
+> shift+shift
+> Edit Custom VM Options 파일
+> 맨 아랫 줄에 아래 내용 추가
+>> -Dfile.encoding=UTF-8
+> IDE restart
+  
