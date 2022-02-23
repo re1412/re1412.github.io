@@ -9,5 +9,7 @@ category: java
 > generate : getter/setter/생성자 자동완성 - Alt + Insert  
 > @Test : JUnit 테스트 annotation, 테스트 클래서 생성 - Ctrl + Shift + T  
 > 맨끝 자동완성("", ;) : Ctrl + Shift + Enter  
+> 파일 이동 : Ctrl + E
+> 변수 생성 : Ctrl + Alt + V
 
 
