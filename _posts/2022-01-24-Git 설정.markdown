@@ -21,6 +21,9 @@ git push
 git push --set-upstream origin master
 ```
 
+# remote 제거
+>git remote remove origin
+
 # git 저장
 >git clone ssh://[계정]@IP/[git repo 경로] [저장디렉토리명]
 
