@@ -27,7 +27,6 @@ git cofnig --global core.autocrlf input  : git 저장시(맥 - \n) 엔터값 \n�
 git init  : git 초기화(.git 생성), 초기화 시 기본으로 브랜치 생성(master)
 git status : git 상태 보기
 git config --global alias.st status : 별칭 설정
-
 ```
 
 working directory : 작업 공간에서 작업 진행
