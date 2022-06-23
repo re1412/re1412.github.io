@@ -11,5 +11,8 @@ category: java
 > 맨끝 자동완성("", ;) : Ctrl + Shift + Enter  
 > 파일 이동 : Ctrl + E
 > 변수 생성 : Ctrl + Alt + V
-
+> 복사 붙여 : Ctrl + D
+> 에러 부분으로 이동 : F2
+> 해당 글 선택 : Ctrl + W
+> ReName : Shift + F6
 

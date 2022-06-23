@@ -1,0 +1,72 @@
+---
+layout: post
+title: git 단축키
+date: 2022-06-23 10:03:00 +0900
+category: java
+---
+# git
+```ruby
+git 명령어 옵션
+git reference를 통해 확인
+
+git config --list  : 모든 설정 확인
+git config --global -e  :  텍스트 에디터로 설정 확인
+
+[수정]
+git config --global -e  :  에디터로 변경
+git config --global user.name = "" : 커맨드로 변경
+
+[출력]
+git config user.name  :  속성값 출력
+
+[윈도우]
+git cofnig --global core.autocrlf true  : git 저장시(윈도우-\r\n) 엔터값 \n으로 맞춰줌 
+[MAC]
+git cofnig --global core.autocrlf input  : git 저장시(맥 - \n) 엔터값 \n으로 맞춰줌
+
+git init  : git 초기화(.git 생성), 초기화 시 기본으로 브랜치 생성(master)
+git status : git 상태 보기
+git config --global alias.st status : 별칭 설정
+
+```
+
+working directory : 작업 공간에서 작업 진행
+staging area : 작업 완료된 공간
+.git directory : commit을 통해 git 저장소에 저장, checkout을 통해 가져옴
+remote 서버의 .git directory : push로 로컬 git 저장소를 서버로 push-저장 하거나 pull-받아올 수 있음.
+(commit - 메시지, 커밋인증자, 날짜 시간정보 해쉬암호화되어 저장)
+
+[working directory]
+untracked : git에 저장되지 않은 신규 파일(working directory에만 있음)
+tracked : git에 존재하는 파일(staging area에 저장)
+tracked - unmodified : git에 저장된 상태에서 변경이 일어나지않음(git에 저장되어 변경 없기에 staging area에 없음)
+tracked - modified : git에 저장되었지만 이전버전(변경이 일어나면 modified)(변경 되었기에 staging area에 있음)
+
+[staging area]
+working directory에서 tracked - modified된 파일만 들어올 수 있음
+
+```ruby
+working directory 에서 tracked로 변경하기 위해서는
+  -  git add 파일명  : tracked로 변경되고 staging area에 저장
+  -  git rm --cached 파일명 : staging area에서 제거되고 tracked에서 untracked 상태로 변경
+```
+
+tracking 하고 싶지 않는 파일
+[gitignore]
+.git <- .git directory
+.gitignore <- 파일형태 - git에 저장하고 싶지 않은 파일경로/파일명 or dircetory명 작성
+
+[파일비교]
+```ruby
+git diff : 모든 변경사항 확인
+git diff --staged : staging area 변경 사항 확인
+```
+
+[commit 전 로그 확인]
+git log : commit을 누가, 언제했는지 메시지와 함께 확인 가능
+
+[git 저장]
+```ruby
+git commit -m "메시지 내용"
+git commit -am "메시지 내용" : staging area 뿐만아니라 working directory 포함하여 commit
+```
